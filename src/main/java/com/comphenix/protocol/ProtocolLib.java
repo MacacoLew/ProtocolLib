@@ -38,6 +38,7 @@ import com.comphenix.protocol.updater.Updater;
 import com.comphenix.protocol.updater.Updater.UpdateType;
 import com.comphenix.protocol.utility.ChatExtensions;
 import com.comphenix.protocol.utility.ByteBuddyFactory;
+import com.comphenix.protocol.utility.NettyVersion;
 import com.comphenix.protocol.utility.MinecraftVersion;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Iterables;
@@ -175,6 +176,9 @@ public class ProtocolLib extends JavaPlugin {
 		if (config.isDetailedErrorReporting()) {
 			detailedReporter.setDetailedReporting(true);
 			logger.warning("Detailed error reporting enabled!");
+			logger.info("Detected netty version: " + NettyVersion.getVersion());
+		} else {
+			NettyVersion.getVersion(); // this will cache the version
 		}
 
 		try {
